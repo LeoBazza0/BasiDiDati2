@@ -1,2 +1,2 @@
 # BasiDiDati2
-mi sono perso
+Ora lavoro qua
