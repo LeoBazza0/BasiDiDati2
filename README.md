@@ -1,2 +1,2 @@
 # BasiDiDati2
-Ora lavoro qua
+Progetto Fotogram per basi di dati 2025
