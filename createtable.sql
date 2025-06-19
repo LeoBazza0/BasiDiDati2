@@ -4,6 +4,8 @@ CHECK (XXXXXX)
 UNIQUE(XXXXXX) 
 */
 
+-- su questo ci dovremmo essere
+
 CREATE TABLE utente {
 Username VARCHAR(32) PRIMARY KEY,
 Email VARCHAR(255) NOT NULL,
