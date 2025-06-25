@@ -13,12 +13,14 @@ Password VARCHAR (64) NOT NULL,
 FotoProfilo BYTEA, -- BYTEA in PostgreSQL, BLOB in MySQL oppure memorizzo il path a file salvati nel filesystem come VARCHAR -- se funziona il tipo image FOLLIA
 }
 
+-- secondo me può fare quqalcosa con il GRANT e DELETE, per eliminare i post
 CREATE TABLE moderatore{
 Username VARCHAR(32) PRIMARY KEY,
 DataNomina DATE NOT NULL, 
 FOREIGN KEY(Username) REFERENCES utente(Username) ON UPDATE CASCADE,
 }
 
+-- secondo me può fare quqalcosa con il GRANT e DELETE, per eliminare i post
 CREATE TABLE amministratore { 
 Username VARCHAR(32) PRIMARY KEY,
 FOREIGN KEY(Username) REFERENCES utente(Username) ON UPDATE CASCADE,
