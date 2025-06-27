@@ -1,9 +1,8 @@
 const express = require('express');
-const bcrypt = require('bcryptjs'); // hashare le password
+const bcrypt = require('bcryptjs'); // per hashare le password
 const jwt = require('jsonwebtoken'); // per generare token JWT
 const pool = require('../db'); // connessione al database
-
-const router = express.Router(); // router di Express (modulare)
+const router = express.Router(); 
 
 // Chiave segreta per JWT
 const JWT_SECRET = '1234fotogram';
@@ -23,16 +22,13 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Username o email già utilizzati' });
     }
 
-    // Hasho la password ricevuta (costo 10)
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Inserisco il nuovo utente nel database
     await pool.query(
       'INSERT INTO utente (Username, Email, Password) VALUES ($1, $2, $3)',
       [username, email, hashedPassword]
     );
 
-    // Invio conferma al client
     res.status(201).json({ message: 'Registrazione completata' });
 
   } catch (err) {
@@ -43,6 +39,7 @@ router.post('/register', async (req, res) => {
 
 //LOGIN
 router.post('/login', async (req, res) => {
+    
   // Destrutturo i dati ricevuti
   const { username, password } = req.body;
 
@@ -59,7 +56,6 @@ router.post('/login', async (req, res) => {
 
     const user = userCheck.rows[0];
 
-    // Verifico se la password inserita combacia con quella hashata
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
