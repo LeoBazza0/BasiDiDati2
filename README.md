@@ -53,3 +53,19 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
     1. Scrivere un server Node.JS che implementi gli endpoint delle API (usando la libreria express), effettuando query su DB Postgres (con la libreria pg), gestendo le risposte, eventuali vincoli non gestibili mediante query, casi d'errore e mancanza di autorizzazione. Lo script di ingresso dovrà essere chiamato index.js e dovrà essere presente un package.json con le dipendenze necessarie. Il codice potrà essere ragionevolmente organizzato in diversi file .js nella root del package.
     2. Le autorizzazioni d'accesso dovranno essere gestite utilizzando JSON Web tokens (JWT), generati durante la procedura di login (con la libreria jsonwebtoken), passati come header per ogni API che necessita di autorizzazione, e invalidati con la procedura di logout.
     3. Implementare l'interfaccia Swagger (con librerie swagger-ui-express e swagger-autogen) per testare le API prodotte.
+
+### Possibile FileTree
+    fotogram/
+├── index.js               # punto di ingresso dell'app
+├── db.js                  # file connessione al database
+├── routes/
+│   ├── auth.js            # login, registrazione, logout
+│   ├── post.js            # API per post e bacheca
+│   ├── follow.js          # API per i follow
+│   ├── moderazione.js     # API per flag, moderare
+│   └── profilo.js         # API profilo utente
+├── middleware/
+│   └── authMiddleware.js  # verifica JWT e permessi
+├── package.json
+├── swagger.js             # configurazione swagger
+└── resources/             # eventuali immagini di esempio
