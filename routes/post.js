@@ -62,20 +62,23 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 });
 
-/**
- * BACHECA DELL'UTENTE
- * GET /api/post/bacheca
- * Mostra i post:
- * - creati dall'utente autenticato
- * - creati dagli utenti che segue
- * Ordinati per data di pubblicazione (dal più recente)
- * Necessita token JWT
+/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
+ * BACHECA CON PAGINAZIONE
+ * GET /api/post/bacheca?page=1&limit=10
+ * Protezione: token JWT
+ * Mostra post propri + seguiti ordinati per data
  */
 router.get('/bacheca', authenticateToken, async (req, res) => {
     const utente = req.user.username;
 
+    // Prendo page e limit dai parametri della query, con valori di default se non specificati
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1) * limit;
+
     try {
-        // 1. Recupero i post propri e dei seguiti
+        // Recupero i post propri e dei seguiti
+        // tengo LIMIT e OFFSET per la paginazione (e l'ordinamento)
         const result = await pool.query(
             `SELECT p.IdPost, p.Utente, p.DataPubblicazione, p.Moderato,
               i.Pic, t.Txt,
@@ -87,12 +90,17 @@ router.get('/bacheca', authenticateToken, async (req, res) => {
           OR p.Utente IN (
                SELECT Utente2 FROM follow WHERE Utente1 = $1
              )
-       ORDER BY p.DataPubblicazione DESC`,
-            [utente]
+       ORDER BY p.DataPubblicazione DESC
+       LIMIT $2 OFFSET $3`,
+            [utente, limit, offset]
         );
 
-        // 2. Invio i dati al client
-        res.status(200).json({ bacheca: result.rows });
+        // risposta
+        res.status(200).json({
+            pagina: page,
+            post_per_pagina: limit,
+            post: result.rows
+        });
 
     } catch (err) {
         console.error(err);
@@ -100,5 +108,4 @@ router.get('/bacheca', authenticateToken, async (req, res) => {
     }
 });
 
-// Esporto il router - - - - - - - - - - - - - - - - - - perché? a cosa mia serve questo?
 module.exports = router;

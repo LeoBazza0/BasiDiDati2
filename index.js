@@ -25,12 +25,29 @@ app.listen(port, () => {
 const swaggerFile = ('./swaggerFile.json')
 app.use('/doc', swaggerUI.serve, swaggerUi.setup(swaggerFile)) // 
 
-
-// DA QUI IN POI NON SO COSA SIANO E A COSA SERVONO 
-
-// Importa le route
+// Importa le routes
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
+
+const followRoutes = require('./routes/follow');
+app.use('/api/follow', followRoutes);
+
+const likeRoutes = require('./routes/like');
+app.use('/api/like', likeRoutes);
+
+const moderazioneRoutes = require('./routes/moderazione');
+app.use('/api/moderazione', moderazioneRoutes);
+
+const postRoutes = require('./routes/post');
+app.use('/api/post', postRoutes);
+
+const profiloRoutes = require('./routes/profilo');
+app.use('/api/profilo', profiloRoutes);
+
+const adminRoutes = require('./routes/admin');
+app.use('/api/admin', adminRoutes);
+
+// DA QUI IN POI NON SO COSA SIANO E A COSA SERVONO 
 
 app.get("/", (req, res) => {
     res.status(200).send({ info: "Node + Express + PG API" })

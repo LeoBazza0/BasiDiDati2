@@ -61,6 +61,7 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 ├── routes/
 │   ├── auth.js            # login, registrazione, logout
 │   ├── post.js            # API per post e bacheca
+│   ├── like.js            # API per i like e unlike
 │   ├── follow.js          # API per i follow
 │   ├── moderazione.js     # API per flag, moderare
 │   └── profilo.js         # API profilo utente
