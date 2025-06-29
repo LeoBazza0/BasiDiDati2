@@ -8,24 +8,29 @@ file in JavaScript che:
 */
 
 const express = require('express');
-const cors = require('cors'); // COSA FA E A COSA SERVE?
+const cors = require('cors'); // permette al frontend di comunicare con le tue API
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger_output.json');
 const app = express();
 
-app.use(cors()); // COSA FA E A COSA SERVE?
-app.use(express.json()) // fa il parse di un json
-app.use(express.urlendcoded({ extended: true })) // le cose codificate li trasforma lui, cosi che può vederli
+app.use(cors());
+app.use(express.json()); // Middleware per leggere body JSON nelle richieste
+app.use(express.urlencoded({ extended: true })); // Se volessi leggere dati da form HTML tradizionali (x-www-form-urlencoded)
 
-const port = 3000 //COSA FA E A COSA SERVE?
+const port = 3000;
 app.listen(port, () => {
-    console.log('project on port ${port}')
-})
+    console.log(`Server attivo sulla porta ${port}`);
+});
 
-const swaggerFile = ('./swaggerFile.json')
-app.use('/doc', swaggerUI.serve, swaggerUi.setup(swaggerFile)) // 
+// Configuro Swagger su /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-// Importa le routes
+// Definisco una route di base di test
+app.get("/", (req, res) => {
+    res.status(200).send({ info: "Node + Express + PostgreSQL API fotogram" });
+});
+
+// Importo e collego tutte le route
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
@@ -46,15 +51,3 @@ app.use('/api/profilo', profiloRoutes);
 
 const adminRoutes = require('./routes/admin');
 app.use('/api/admin', adminRoutes);
-
-// DA QUI IN POI NON SO COSA SIANO E A COSA SERVONO 
-
-app.get("/", (req, res) => {
-    res.status(200).send({ info: "Node + Express + PG API" })
-})
-
-require('./endopoints')(app) //endpoints
-
-
-// molto probabilmente avrò bisogno di altro
-// sicuramente di capire cosa sto facendo e se i dati delle porte ecc. sono giusti

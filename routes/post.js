@@ -17,6 +17,23 @@ router.post('/', authenticateToken, async (req, res) => {
     const { testo, immagine } = req.body;
     const utente = req.user.username;
 
+    // Controllo numero di post moderati negli ultimi 30 giorni
+    const moderatiCheck = await pool.query(
+        `SELECT COUNT(*) FROM post 
+   WHERE Utente = $1 AND Moderato = true 
+     AND DataPubblicazione >= CURRENT_DATE - INTERVAL '30 days'`,
+        [utente]
+    );
+
+    const numModerati = parseInt(moderatiCheck.rows[0].count);
+
+    if (numModerati >= 3) {
+        return res.status(403).json({
+            message: 'Hai 3 o più post moderati negli ultimi 30 giorni. Non puoi pubblicare nuovi post.'
+        });
+    }
+
+
     if (!testo && !immagine) {
         return res.status(400).json({ message: 'Devi fornire un testo o un\'immagine' });
     }

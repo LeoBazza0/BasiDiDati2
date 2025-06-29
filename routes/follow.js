@@ -20,7 +20,6 @@ router.post('/:username', authenticateToken, async (req, res) => {
     }
 
     try {
-        // Controllo se esiste l'utente da seguire
         const checkUser = await pool.query(
             'SELECT * FROM utente WHERE Username = $1',
             [utenteSeguito]
@@ -96,7 +95,7 @@ router.get('/seguiti', authenticateToken, async (req, res) => {
     }
 });
 
-/**
+/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
  * VEDI CHI TI SEGUE
  * GET /api/follow/seguaci
  */
@@ -119,9 +118,4 @@ router.get('/seguaci', authenticateToken, async (req, res) => {
     }
 });
 
-// Esporto il router
 module.exports = router;
-
-
-
-// IN TUTTO QUESTO DA DOVE PRENDE I NOMI UTENTE1 E UTENTE2 ???

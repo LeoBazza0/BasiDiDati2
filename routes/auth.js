@@ -44,7 +44,6 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    // Controllo se l'utente esiste
     const userCheck = await pool.query(
       'SELECT * FROM utente WHERE Username = $1',
       [username]
@@ -62,7 +61,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Username o password errati' });
     }
 
-    // Creo il token JWT con payload: username e ruolo base (per ora "user") // - - - - - - - - - - - - - controllare qua poi, il "per ora"
+    // Creo il token JWT con payload: username e ruolo base 
     const token = jwt.sign(
       { username: user.username },
       JWT_SECRET,
@@ -79,12 +78,11 @@ router.post('/login', async (req, res) => {
 });
 
 //LOGOUT 
-// Questa route è solo "simbolica", giusto per confermare il logout, Il logout lato API si gestisce lato client cancellando il token salvato.
+// Questa route è solo "simbolica", giusto per confermare il logout, Il logout lato API si gestisce lato client cancellando il token salvato
 
 router.post('/logout', (req, res) => {
   // Non serve fare niente lato server, basta che il client elimini il token salvato
   res.json({ message: 'Logout effettuato (cancella il token lato client)' });
 });
 
-// Esporto il router per usarlo nell'index.js
 module.exports = router;
