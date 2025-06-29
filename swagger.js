@@ -14,4 +14,4 @@ const endpointsFiles = ['./index.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
 
-
+// Cancella node_modules - Cancella package-lock.json - Esegui: npm install - Verrà rigenerato perfettamente aggiornato
