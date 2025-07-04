@@ -70,3 +70,9 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 ├── package.json
 ├── swagger.js             # configurazione swagger
 └── resources/             # eventuali immagini di esempio
+
+### Come far funzionare il tutto
+
+1. fai il server su pgadmin
+2. tasto destro sul server, query tool, inserisci il file SQL inserttable.sql, F5
+3. stessa cosa con insert, poi F5

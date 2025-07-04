@@ -239,174 +239,174 @@ VALUES ('user06', '2023-05-01'),
 
 INSERT INTO
     post (
-        IdPost,
+        Idpost,
         Utente,
         DataPubblicazione,
         Moderato
     )
 VALUES (
-        'P001',
+        'post001',
         'user01',
         '2024-05-10',
         TRUE
     ),
     (
-        'P002',
+        'post002',
         'user02',
         '2024-05-11',
         FALSE
     ),
     (
-        'P003',
+        'post003',
         'user03',
         '2024-05-11',
         FALSE
     ),
     (
-        'P004',
+        'post004',
         'user04',
         '2024-05-12',
         TRUE
     ),
     (
-        'P005',
+        'post005',
         'user05',
         '2024-05-13',
         FALSE
     ),
     (
-        'P006',
+        'post006',
         'user11',
         '2024-05-14',
         FALSE
     ),
     (
-        'P007',
+        'post007',
         'user12',
         '2024-05-14',
         TRUE
     ),
     (
-        'P008',
+        'post008',
         'user13',
         '2024-05-15',
         FALSE
     ),
     (
-        'P009',
+        'post009',
         'user14',
         '2024-05-16',
         TRUE
     ),
     (
-        'P010',
+        'post010',
         'user15',
         '2024-05-17',
         FALSE
     ),
     (
-        'P011',
+        'post011',
         'user16',
         '2024-05-18',
         TRUE
     ),
     (
-        'P012',
+        'post012',
         'user17',
         '2024-05-19',
         FALSE
     ),
     (
-        'P013',
+        'post013',
         'user18',
         '2024-05-20',
         FALSE
     ),
     (
-        'P014',
+        'post014',
         'user19',
         '2024-05-21',
         FALSE
     ),
     (
-        'P015',
+        'post015',
         'user20',
         '2024-05-21',
         FALSE
     ),
     (
-        'P016',
+        'post016',
         'user21',
         '2024-05-22',
         FALSE
     ),
     (
-        'P017',
+        'post017',
         'user22',
         '2024-05-23',
         FALSE
     ),
     (
-        'P018',
+        'post018',
         'user23',
         '2024-05-24',
         FALSE
     ),
     (
-        'P019',
+        'post019',
         'user24',
         '2024-05-25',
         FALSE
     ),
     (
-        'P020',
+        'post020',
         'user25',
         '2024-05-26',
         FALSE
     );
 
 INSERT INTO
-    "like" (Utente, Post)
-VALUES ('user01', 'post02'),
-    ('user02', 'post01'),
-    ('user03', 'post04'),
-    ('user04', 'post03'),
-    ('user05', 'post05'),
-    ('user06', 'post06'),
-    ('user07', 'post07'),
-    ('user08', 'post08'),
-    ('user09', 'post09'),
-    ('user10', 'post10'),
-    ('user11', 'post01'),
-    ('user12', 'post03'),
-    ('user13', 'post02'),
-    ('user14', 'post05'),
-    ('user15', 'post04'),
-    ('user16', 'post06'),
-    ('user17', 'post07'),
-    ('user18', 'post08'),
-    ('user19', 'post09'),
-    ('user20', 'post10'),
-    ('user26', 'post01'),
-    ('user26', 'post02'),
-    ('user27', 'post03'),
-    ('user27', 'post04'),
-    ('user28', 'post05'),
-    ('user28', 'post06'),
-    ('user29', 'post07'),
-    ('user29', 'post08'),
-    ('user30', 'post09'),
-    ('user30', 'post10'),
-    ('user31', 'post02'),
-    ('user31', 'post04'),
-    ('user32', 'post06'),
-    ('user32', 'post08'),
-    ('user33', 'post03'),
-    ('user33', 'post05'),
-    ('user34', 'post07'),
-    ('user34', 'post09'),
-    ('user35', 'post01'),
-    ('user35', 'post10');
+    "mipiace" (Utente, post)
+VALUES ('user01', 'post002'),
+    ('user02', 'post001'),
+    ('user03', 'post004'),
+    ('user04', 'post003'),
+    ('user05', 'post005'),
+    ('user06', 'post006'),
+    ('user07', 'post007'),
+    ('user08', 'post008'),
+    ('user09', 'post009'),
+    ('user10', 'post010'),
+    ('user11', 'post001'),
+    ('user12', 'post003'),
+    ('user13', 'post002'),
+    ('user14', 'post005'),
+    ('user15', 'post004'),
+    ('user16', 'post006'),
+    ('user17', 'post007'),
+    ('user18', 'post008'),
+    ('user19', 'post009'),
+    ('user20', 'post010'),
+    ('user26', 'post001'),
+    ('user26', 'post002'),
+    ('user27', 'post003'),
+    ('user27', 'post004'),
+    ('user28', 'post005'),
+    ('user28', 'post006'),
+    ('user29', 'post007'),
+    ('user29', 'post008'),
+    ('user30', 'post009'),
+    ('user30', 'post010'),
+    ('user31', 'post002'),
+    ('user31', 'post004'),
+    ('user32', 'post006'),
+    ('user32', 'post008'),
+    ('user33', 'post003'),
+    ('user33', 'post005'),
+    ('user34', 'post007'),
+    ('user34', 'post009'),
+    ('user35', 'post001'),
+    ('user35', 'post010');
 
 INSERT INTO
     follow (Utente1, Utente2)
@@ -452,16 +452,16 @@ VALUES ('user01', 'user02'),
     ('user06', 'user35');
 
 INSERT INTO
-    flaggare (Utente, Post)
-VALUES ('user15', 'P003'),
-    ('user16', 'P007'),
-    ('user17', 'P009');
+    flaggare (Utente, post)
+VALUES ('user15', 'post003'),
+    ('user16', 'post007'),
+    ('user17', 'post009');
 
 -- non so se ha senso avere questa
 INSERT INTO
-    moderare (Utente, Post)
-VALUES ('user06', 'P001'),
-    ('user07', 'P004'),
-    ('user08', 'P007'),
-    ('user09', 'P009'),
-    ('user10', 'P011');
+    moderare (Utente, post)
+VALUES ('user06', 'post001'),
+    ('user07', 'post004'),
+    ('user08', 'post007'),
+    ('user09', 'post009'),
+    ('user10', 'post011');
