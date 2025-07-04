@@ -73,6 +73,11 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 
 ### Come far funzionare il tutto
 
-1. fai il server su pgadmin
-2. tasto destro sul server, query tool, inserisci il file SQL inserttable.sql, F5
-3. stessa cosa con insert, poi F5
+1. fai il server su pgadmin (create -> database)
+2. tasto destro sul server -> query tool
+3. inserisci il file SQL createtable.sql -> F5
+4. stessa cosa con insert.sql -> F5
+5. (facoltativo) nel terminale del codice -> npm install (legge package.js e scarica le node_modules/ ) 
+6. (facoltativo) nel terminale del codice -> node swagger.js (crea/aggiorna swagger_output.json)
+7. nel terminale del codice -> node index.js 
+8. 

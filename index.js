@@ -27,7 +27,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Definisco una route di base di test
 app.get("/", (req, res) => {
-    res.status(200).send({ info: "Node + Express + PostgreSQL API fotogram" });
+    res.status(200).send({ info: "Node + Express + PostgreSQL API fotogram | go to http://localhost:3000/api-docs" });
 });
 
 // Importo e collego tutte le route

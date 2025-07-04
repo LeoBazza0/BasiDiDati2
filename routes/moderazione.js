@@ -3,7 +3,7 @@
 const express = require('express');
 const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
-const router = express.Router(); ù
+const router = express.Router();
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
  * FLAGGA UN POST
