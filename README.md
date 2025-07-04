@@ -86,3 +86,14 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 
 La connessione nel db.js deve avere i dati corretti (user, password, port)
 Se cambi qualcosa nelle route, devi rigenerare swagger_output.json
+
+
+# TODO
+1. Sistemare creazione.txt
+2. sistemare documentazione.txt
+3. fare una cartella resources e mettere dentro un po di immagini (max 100kb)
+4. controllare le generalizzazioni degli schemi er
+5. controllare tutto (commenti e tutto)
+6. eliminare node_modules
+7. fare uno .zip
+8. caricare su upload

@@ -1,0 +1,92 @@
+- - - - - - DOCUMENTAZIONE PROGETTO 2025 FOTOGRAM BAZZA - - - - - - 
+
+- - - - - - SCHEMA RELAZIONALE - - - - - - 
+
+Utente(
+  Username CHAR(32),
+  Email CHAR(64) NOT NULL,
+  Password CHAR(64) NOT NULL,
+  FotoProfilo BYTEA
+)
+PRIMARY KEY (Username)
+
+Moderatore(
+  Username CHAR(32),
+  DataNomina DATE NOT NULL
+)
+PRIMARY KEY (Username)
+FK: Username = Utente.Username
+
+Amministratore(
+  Username CHAR(32)
+)
+PRIMARY KEY (Username)
+FK: Username = Utente.Username
+
+Post(
+  IdPost CHAR(32),
+  Utente CHAR(64) NOT NULL,
+  DataPubblicazione DATE NOT NULL,
+  Moderato BOOLEAN NOT NULL
+)
+PRIMARY KEY (IdPost)
+FK: Utente = Utente.Username
+
+Immagine(
+  IdPost CHAR(32),
+  Pic BYTEA
+)
+PRIMARY KEY (IdPost)
+FK: IdPost = Post.IdPost
+
+Testo(
+  IdPost CHAR(32) PRIMARY KEY,
+  Txt VARCHAR(280)
+)
+PRIMARY KEY (IdPost)
+FK: IdPost = Post.IdPost
+
+
+Like(
+  Utente CHAR(64) NOT NULL,
+  Post CHAR(32) NOT NULL,
+)
+PRIMARY KEY (Utente, Post)
+FK: Utente = Utente.Username
+FK: IdPost = Post.IdPost
+
+
+Follow(
+  Utente1 CHAR(64) NOT NULL,
+  Utente2 CHAR(64) NOT NULL,
+)
+PRIMARY KEY (Utente1, Utente2)
+FK: Utente1 = Utente.Username
+FK: Utente2 = Utente.Username
+
+
+Flaggare(
+  Utente CHAR(64) NOT NULL,
+  Post CHAR(32) NOT NULL,
+  PRIMARY KEY (Utente, Post)
+)
+PRIMARY KEY (Utente, Post)
+FK: Utente = Utente.Username
+FK: IdPost = Post.IdPost
+
+
+Moderare(
+  Utente CHAR(64) NOT NULL,
+  Post CHAR(32) NOT NULL,
+)
+PRIMARY KEY (Utente, Post)
+FK: Utente = Moderatore.Username
+FK: IdPost = Post.IdPost
+
+- - - - - - SPECIFICHE PER GLI SCHEMI ER - - - - - - 
+
+le immagini da caricare possono essere al massimo di 100kb
+
+tra moderatore e utente c'è una generalizzazione parziale esclusiva 
+tra amministratore e moderatore c'è una generalizzazione parziale esclusiva 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - controllare questa ultima parte, parziale o totale?
