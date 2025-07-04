@@ -3,10 +3,10 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * PROMUOVI UN UTENTE A MODERATORE
- * POST /api/admin/promuovi/:username
- * Protezione: token JWT + verifica amministratore
+/*
+ PROMUOVI UN UTENTE A MODERATORE
+ POST /api/admin/promuovi/:username
+ Protezione: token JWT + verifica amministratore
  */
 router.post('/promuovi/:username', authenticateToken, async (req, res) => {
     const admin = req.user.username;

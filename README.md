@@ -56,20 +56,20 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 
 ### Possibile FileTree
     fotogram/
-├── index.js               # punto di ingresso dell'app
-├── db.js                  # file connessione al database
-├── routes/
-│   ├── auth.js            # login, registrazione, logout
-│   ├── post.js            # API per post e bacheca
-│   ├── like.js            # API per i like e unlike
-│   ├── follow.js          # API per i follow
-│   ├── moderazione.js     # API per flag, moderare
-│   └── profilo.js         # API profilo utente
-├── middleware/
-│   └── authMiddleware.js  # verifica JWT e permessi
-├── package.json
-├── swagger.js             # configurazione swagger
-└── resources/             # eventuali immagini di esempio
+    index.js               # punto di ingresso dell'app
+    db.js                  # file connessione al database
+    routes/
+        - auth.js            # login, registrazione, logout
+        - post.js            # API per post e bacheca
+        - like.js            # API per i like e unlike
+        - follow.js          # API per i follow
+        - moderazione.js     # API per flag, moderare
+        - profilo.js         # API profilo utente
+    middleware/
+        - authMiddleware.js  # verifica JWT e permessi
+    package.json
+    swagger.js             # configurazione swagger
+    resources/             # eventuali immagini di esempio
 
 ### Come far funzionare il tutto
 
@@ -77,10 +77,12 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 2. tasto destro sul server -> query tool
 3. inserisci il file SQL createtable.sql -> F5
 4. stessa cosa con insert.sql -> F5
-5. (facoltativo) nel terminale del codice -> npm install (legge package.js e scarica le node_modules/ ) 
-6. (facoltativo) nel terminale del codice -> node swagger.js (crea/aggiorna swagger_output.json)
-7. nel terminale del codice -> node index.js 
-8. vai su http://localhost:3000/api-docs 
+5. in db.js modifica i dati per far si che matchino con quelli della macchina su cui lavori
+6. (facoltativo) nel terminale del codice -> npm install (legge package.js e scarica le node_modules/ ) 
+7. (facoltativo) nel terminale del codice -> node swagger.js (crea/aggiorna swagger_output.json)
+8. nel terminale del codice -> node index.js 
+9. vai su http://localhost:3000/api-docs 
+10. dopo che si fa login, viene dato un JWT token, TIENILO e mettilo nell'header quando lo chiede con la parola "Bearer" davanti
 
 La connessione nel db.js deve avere i dati corretti (user, password, port)
 Se cambi qualcosa nelle route, devi rigenerare swagger_output.json

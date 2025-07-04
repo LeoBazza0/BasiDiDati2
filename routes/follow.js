@@ -3,12 +3,12 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * SEGUI UN UTENTE
- * POST /api/follow/:username
- * Richiede il token per autenticarsi
- * Parametro :username → l'utente da seguire
- */
+/*
+SEGUI UN UTENTE
+POST /api/follow/:username
+Richiede il token per autenticarsi
+Parametro: username → l'utente da seguire
+*/
 
 //FOLLOW
 router.post('/:username', authenticateToken, async (req, res) => {
@@ -42,10 +42,10 @@ router.post('/:username', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * SMETTI DI SEGUIRE UN UTENTE
- * DELETE /api/follow/:username
- */
+/*
+SMETTI DI SEGUIRE UN UTENTE
+DELETE /api/follow/:username
+*/
 
 //STOP FOLLOW
 router.delete('/:username', authenticateToken, async (req, res) => {

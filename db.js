@@ -1,12 +1,10 @@
-// NON SO SE CI VA SOLO QUESTO IN QUESTO FILE 
-
 const { Pool } = require('pg');
 
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'Fotogram',
-    password: 'unimi',
+    database: 'Fotogram', // nome database in postgres
+    password: 'unimi', // password dataase in postgres
     port: 5432,
 });
 

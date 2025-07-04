@@ -1,13 +1,8 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = '1234fotogram';
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * Middleware di autenticazione:
- * - controlla che nella richiesta ci sia il token JWT
- * - verifica che sia valido
- * - se sì, aggiunge il payload del token a req.user e prosegue
- * - se no, restituisce errore di accesso negato
- */
+
+// Middleware di autenticazione:
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];

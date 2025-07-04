@@ -1,12 +1,3 @@
-/* 
-file in JavaScript che: 
-- crea e configura l’app Express
-- imposta i middleware per leggere JSON e dati da form
-- definisce una route GET di base
-- importa e collega tutte le altre route definite in endopoints.js
-- avvia il server sulla porta 3000 
-*/
-
 const express = require('express');
 const cors = require('cors'); // permette al frontend di comunicare con le tue API
 const swaggerUi = require('swagger-ui-express');
@@ -51,3 +42,16 @@ app.use('/api/profilo', profiloRoutes);
 
 const adminRoutes = require('./routes/admin');
 app.use('/api/admin', adminRoutes);
+
+/*
+1. fai il server su pgadmin (create -> database)
+2. tasto destro sul server -> query tool
+3. inserisci il file SQL createtable.sql -> F5
+4. stessa cosa con insert.sql -> F5
+5. in db.js modifica i dati per far si che matchino con quelli della macchina su cui lavori
+6. (facoltativo) nel terminale del codice -> npm install (legge package.js e scarica le node_modules/ ) 
+7. (facoltativo) nel terminale del codice -> node swagger.js (crea/aggiorna swagger_output.json)
+8. nel terminale del codice -> node index.js 
+9. vai su http://localhost:3000/api-docs 
+10. dopo che si fa login, viene dato un JWT token, TIENILO e mettilo nell'header quando lo chiede con la parola "Bearer" davanti
+*/
