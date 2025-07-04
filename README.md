@@ -80,4 +80,7 @@ testo chiamato documentazione.txt al quale saranno da aggiungersi altri file spe
 5. (facoltativo) nel terminale del codice -> npm install (legge package.js e scarica le node_modules/ ) 
 6. (facoltativo) nel terminale del codice -> node swagger.js (crea/aggiorna swagger_output.json)
 7. nel terminale del codice -> node index.js 
-8. 
+8. vai su http://localhost:3000/api-docs 
+
+La connessione nel db.js deve avere i dati corretti (user, password, port)
+Se cambi qualcosa nelle route, devi rigenerare swagger_output.json
