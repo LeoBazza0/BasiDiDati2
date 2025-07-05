@@ -41,7 +41,7 @@ router.post('/promuovi/:username', authenticateToken, async (req, res) => {
             return res.status(400).json({ message: 'Questo utente è già moderatore' });
         }
 
-        // Promuovi: inserisci nella tabella moderatore con data odierna
+        // Promuovere: inserisci nella tabella moderatore con data odierna
         await pool.query(
             'INSERT INTO moderatore (Username, DataNomina) VALUES ($1, CURRENT_DATE)',
             [userToPromote]

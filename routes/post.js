@@ -3,14 +3,13 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * Endpoint per pubblicare un post
- * POST /api/post
- * Dati richiesti:
- *  - testo: opzionale (se c'è è un post testuale)
- *  - immagine: opzionale (se c'è è un post immagine in base64)
- * Non possono esserci entrambi vuoti!
- */
+/*
+POST /api/post
+Dati richiesti:
+ - testo: opzionale (se c'è è un post testuale)
+ - immagine: opzionale (se c'è è un post immagine in base64)
+Non possono esserci entrambi vuoti!
+*/
 
 
 router.post('/', authenticateToken, async (req, res) => {
@@ -79,12 +78,12 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * BACHECA CON PAGINAZIONE
- * GET /api/post/bacheca?page=1&limit=10
- * Protezione: token JWT
- * Mostra post propri + seguiti ordinati per data
- */
+/*
+BACHECA CON PAGINAZIONE
+GET /api/post/bacheca?page=1&limit=10
+Protezione: token JWT
+Mostra post propri + seguiti ordinati per data
+*/
 router.get('/bacheca', authenticateToken, async (req, res) => {
     const utente = req.user.username;
 

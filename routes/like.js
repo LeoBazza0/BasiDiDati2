@@ -3,11 +3,11 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * METTI UN LIKE A UN POST
- * POST /api/like/:idPost
- * Protezione: token JWT
- */
+/*
+METTI UN LIKE A UN POST
+POST /api/like/:idPost
+Protezione: token JWT
+*/
 router.post('/:idPost', authenticateToken, async (req, res) => {
   const utente = req.user.username;
   const idPost = req.params.idPost;
@@ -36,11 +36,11 @@ router.post('/:idPost', authenticateToken, async (req, res) => {
   }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * TOGLI UN LIKE DA UN POST
- * DELETE /api/like/:idPost
- * Protezione: token JWT
- */
+/*
+TOGLI UN LIKE DA UN POST
+DELETE /api/like/:idPost
+Protezione: token JWT
+*/
 router.delete('/:idPost', authenticateToken, async (req, res) => {
   const utente = req.user.username;
   const idPost = req.params.idPost;

@@ -5,11 +5,11 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * FLAGGA UN POST
- * POST /api/moderazione/flag/:idPost
- * Protezione: token JWT
- */
+/*
+FLAGGA UN POST
+POST /api/moderazione/flag/:idPost
+Protezione: token JWT
+*/
 router.post('/flag/:idPost', authenticateToken, async (req, res) => {
     const utente = req.user.username;
     const idPost = req.params.idPost;
@@ -34,11 +34,11 @@ router.post('/flag/:idPost', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * TOGLI FLAG DA UN POST
- * DELETE /api/moderazione/flag/:idPost
- * Protezione: token JWT
- */
+/*
+TOGLI FLAG DA UN POST
+DELETE /api/moderazione/flag/:idPost
+Protezione: token JWT
+*/
 router.delete('/flag/:idPost', authenticateToken, async (req, res) => {
     const utente = req.user.username;
     const idPost = req.params.idPost;
@@ -61,11 +61,11 @@ router.delete('/flag/:idPost', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * LISTA POST FLAGGATI (solo per moderatori)
- * GET /api/moderazione/flagged
- * Protezione: token JWT + verifica moderatore
- */
+/*
+LISTA POST FLAGGATI (solo per moderatori)
+GET /api/moderazione/flagged
+Protezione: token JWT + verifica moderatore
+*/
 router.get('/flagged', authenticateToken, async (req, res) => {
     const utente = req.user.username;
 
@@ -97,11 +97,11 @@ router.get('/flagged', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * MODERA UN POST (solo moderatori)
- * POST /api/moderazione/modera/:idPost
- * Protezione: token JWT + verifica moderatore
- */
+/*
+MODERA UN POST (solo moderatori)
+POST /api/moderazione/modera/:idPost
+Protezione: token JWT + verifica moderatore
+*/
 router.post('/modera/:idPost', authenticateToken, async (req, res) => {
     const moderatore = req.user.username;
     const idPost = req.params.idPost;

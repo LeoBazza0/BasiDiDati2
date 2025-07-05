@@ -89,4 +89,6 @@ le immagini da caricare possono essere al massimo di 100kb
 
 tra moderatore e utente c'è una generalizzazione parziale esclusiva 
 tra amministratore e moderatore c'è una generalizzazione parziale esclusiva 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - controllare questa ultima parte, parziale o totale?
+
+un utente che ha 3 post moderati nell'arco di 30 gg, non può creare nuovi post finchè non viene sistemato (tolta la modearazione da un post) o passano 30 gg dal primo post moderato
+

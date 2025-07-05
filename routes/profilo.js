@@ -3,12 +3,12 @@ const pool = require('../db');
 const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * OTTIENI IL PROFILO DI UN UTENTE
- * GET /api/profilo/:username
- * Protezione: token JWT
- * Ritorna: username, email, immagine profilo, quanti segue, quanti lo seguono, suoi post
- */
+/*
+OTTIENI IL PROFILO DI UN UTENTE
+GET /api/profilo/:username
+Protezione: token JWT
+Ritorna: username, email, immagine profilo, quanti segue, quanti lo seguono, suoi post
+*/
 router.get('/:username', authenticateToken, async (req, res) => {
     const usernameProfilo = req.params.username;
 
@@ -64,11 +64,11 @@ router.get('/:username', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * MODIFICA IMMAGINE PROFILO
- * PATCH /api/profilo/immagine
- * Protezione: token JWT
- * Dati richiesti: immagine base64 (max 100kb)
+/*
+MODIFICA IMMAGINE PROFILO
+PATCH /api/profilo/immagine
+Protezione: token JWT
+Dati richiesti: immagine base64 (max 100kb)
  */
 
 
@@ -102,12 +102,12 @@ router.patch('/immagine', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * RICERCA UTENTI PER NOME
- * GET /api/profilo/cerca?query=xxx
- * Protezione: token JWT
- * Restituisce username, email, immagine profilo
- */
+/*
+RICERCA UTENTI PER NOME
+GET /api/profilo/cerca?query=xxx
+Protezione: token JWT
+Restituisce username, email, immagine profilo
+*/
 router.get('/cerca', authenticateToken, async (req, res) => {
     const query = req.query.query;
     const utente = req.user.username;

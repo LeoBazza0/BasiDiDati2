@@ -59,7 +59,6 @@ router.delete('/:username', authenticateToken, async (req, res) => {
             [utenteSeguace, utenteSeguito]
         );
 
-        // result.rowCount → quante righe eliminate - - - - - - - - - - - - - - - - perché fa cosi?
         if (result.rowCount === 0) {
             return res.status(404).json({ message: 'Non seguivi questo utente' });
         }
@@ -72,10 +71,10 @@ router.delete('/:username', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * VEDI CHI SEGUI
- * GET /api/follow/seguiti
- */
+/*
+VEDI CHI SEGUI
+GET /api/follow/seguiti
+*/
 
 // VEDI FOLLOWINGS
 router.get('/seguiti', authenticateToken, async (req, res) => {
@@ -95,10 +94,10 @@ router.get('/seguiti', authenticateToken, async (req, res) => {
     }
 });
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - vedo se togliere questa spiegazione o meno
- * VEDI CHI TI SEGUE
- * GET /api/follow/seguaci
- */
+/*
+VEDI CHI TI SEGUE
+GET /api/follow/seguaci
+*/
 
 // VEDI FOLLOWERS
 router.get('/seguaci', authenticateToken, async (req, res) => {
